@@ -20,3 +20,6 @@ var boardCoordinate = mapOf(
 
 const val WINNER_TEXT = " is a winner"
 const val PLAYER_TURN_TEXT = "'s turn"
+
+const val PLAYER1_PARAM = "player1"
+const val PLAYER2_PARAM = "player2"

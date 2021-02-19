@@ -1,15 +1,17 @@
 package info.mylabstudio.tictactoe.presentation
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import info.mylabstudio.tictactoe.R
-import kotlinx.android.synthetic.main.fragment_registration.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
-class RegistrationFragment(private val onNavigationListener: OnNavigationListener) : Fragment() {
+
+class SplashFragment(private val onNavigationListener: OnNavigationListener) : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,26 +21,21 @@ class RegistrationFragment(private val onNavigationListener: OnNavigationListene
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-
-        return inflater.inflate(R.layout.fragment_registration, container, false)
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_splash, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        btnPlay.setOnClickListener {
-            val player1Text = etPlayer1Name.text
-            val player2Text = etPlayer2Name.text
-            onNavigationListener.onRegistration(
-                player1 = player1Text.toString(),
-                player2 = player2Text.toString()
-            )
+        super.onViewCreated(view, savedInstanceState)
+        GlobalScope.launch {
+            delay(5000)
+            onNavigationListener.onSplash()
         }
     }
-
 
     companion object {
         @JvmStatic
         fun newInstance(onNavigationListener: OnNavigationListener) =
-            RegistrationFragment(onNavigationListener)
+            SplashFragment(onNavigationListener)
     }
 }

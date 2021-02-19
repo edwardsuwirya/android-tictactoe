@@ -15,27 +15,30 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="24dp">
+            app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/tic_tac_toe_med"
                 android:id="@+id/imageView"
-                android:contentDescription="tictactoe" />
+                android:contentDescription="tictactoe"
+                android:layout_marginBottom="30dp" />
+
+        <TextView
+                android:text="Please register player name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView"
+                android:textSize="18sp"
+                android:textColor="@color/white" />
 
         <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-            <TextView
-                    android:text="Player 1 Name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/labelPlayer1Name"
-                    android:layout_weight="3"
-                    android:textColor="@color/lightgray" />
+                android:layout_height="match_parent"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="16dp">
 
             <EditText
                     android:layout_width="match_parent"
@@ -43,7 +46,14 @@
                     android:inputType="textPersonName"
                     android:ems="10"
                     android:id="@+id/etPlayer1Name"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_text_bg"
+                    android:hint="Player 1 name"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:paddingStart="16dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -51,21 +61,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-            <TextView
-                    android:text="Player 2 Name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/labelPlayer2Name"
-                    android:layout_weight="3"
-                    android:textColor="@color/lightgray" />
-
             <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
                     android:ems="10"
                     android:id="@+id/etPlayer2Name"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_text_bg"
+                    android:hint="Player 2 name"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:paddingTop="8dp"
+                    android:paddingStart="16dp"
+                    android:paddingBottom="8dp" />
         </LinearLayout>
 
         <Button
@@ -73,6 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/btnPlay"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="30dp"
+                android:background="@drawable/button_bg" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
