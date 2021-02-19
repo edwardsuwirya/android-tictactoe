@@ -5,81 +5,16 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.PlayerRegistrationActivity" android:padding="10dp" android:background="@color/blue">
+        tools:context=".presentation.MainActivity" android:padding="10dp" android:background="@color/blue">
 
-    <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="10dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="10dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="9dp"
-            android:layout_marginBottom="9dp" app:layout_constraintBottom_toBottomOf="parent">
-        <TextView
-                android:text="Current Player"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/tvCurrentPlayer" android:textSize="32sp"
-                android:textAlignment="center" android:textColor="@color/lightgray"/>
-        <TableLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+    <FrameLayout
+            android:id="@+id/fragmentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
 
-            <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" android:gravity="center" android:layout_marginTop="5pt">
-                <Button
-                        android:layout_width="40pt"
-                        android:layout_height="40pt" android:id="@+id/button9" android:layout_marginLeft="5pt"
-                        android:background="@android:color/background_light" android:onClick="buttonPlayClick"
-                        android:textSize="24sp" android:textStyle="bold"/>
-                <Button
-                        android:layout_width="40pt"
-                        android:layout_height="40pt" android:id="@+id/button8" android:layout_marginLeft="5pt"
-                        android:background="@android:color/background_light" android:onClick="buttonPlayClick"
-                        android:textSize="24sp" android:textStyle="bold"/>
-                <Button
-                        android:layout_width="40pt"
-                        android:layout_height="40pt" android:id="@+id/button7" android:layout_marginLeft="5pt"
-                        android:background="@android:color/background_light" android:onClick="buttonPlayClick"
-                        android:textSize="24sp" android:textStyle="bold"/>
-            </TableRow>
-            <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" android:gravity="center" android:layout_marginTop="5pt">
-                <Button
-                        android:layout_width="40pt"
-                        android:layout_height="40pt" android:id="@+id/button6" android:layout_marginLeft="5pt"
-                        android:background="@android:color/background_light" android:onClick="buttonPlayClick"
-                        android:textSize="24sp" android:textStyle="bold"/>
-                <Button
-                        android:layout_width="40pt"
-                        android:layout_height="40pt" android:id="@+id/button5" android:layout_marginLeft="5pt"
-                        android:background="@android:color/background_light" android:onClick="buttonPlayClick"
-                        android:textSize="24sp" android:textStyle="bold"/>
-                <Button
-                        android:layout_width="40pt"
-                        android:layout_height="40pt" android:id="@+id/button4" android:layout_marginLeft="5pt"
-                        android:background="@android:color/background_light" android:onClick="buttonPlayClick"
-                        android:textSize="24sp" android:textStyle="bold"/>
-            </TableRow>
-            <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" android:gravity="center" android:layout_marginTop="5pt">
-                <Button
-                        android:layout_width="40pt"
-                        android:layout_height="40pt" android:id="@+id/button3" android:layout_marginLeft="5pt"
-                        android:background="@android:color/background_light" android:onClick="buttonPlayClick"
-                        android:textSize="24sp" android:textStyle="bold"/>
-                <Button
-                        android:layout_width="40pt"
-                        android:layout_height="40pt" android:id="@+id/button2" android:layout_marginLeft="5pt"
-                        android:background="@android:color/background_light" android:onClick="buttonPlayClick"
-                        android:textSize="24sp" android:textStyle="bold"/>
-                <Button
-                        android:layout_width="40pt"
-                        android:layout_height="40pt" android:id="@+id/button1" android:layout_marginLeft="5pt"
-                        android:background="@android:color/background_light" android:onClick="buttonPlayClick"
-                        android:textSize="24sp" android:textStyle="bold"/>
-            </TableRow>
-        </TableLayout>
-    </LinearLayout>
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
