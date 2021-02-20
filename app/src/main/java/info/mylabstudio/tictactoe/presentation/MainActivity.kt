@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction
 import info.mylabstudio.tictactoe.R
 import info.mylabstudio.tictactoe.utils.PLAYER1_PARAM
 import info.mylabstudio.tictactoe.utils.PLAYER2_PARAM
+import info.mylabstudio.tictactoe.utils.tictactoeNav
 
 class MainActivity : AppCompatActivity(), OnNavigationListener {
     private lateinit var registrationFragment: RegistrationFragment
@@ -51,7 +52,10 @@ class MainActivity : AppCompatActivity(), OnNavigationListener {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.apply {
             when {
-                fragment is SplashFragment -> tictactoeNav(
+                fragment is SplashFragment -> setCustomAnimations(
+                    R.anim.slide_in,
+                    R.anim.slide_out
+                ).tictactoeNav(
                     fragment,
                     SPLASH_FRAGMENT_TAG,
                     null
@@ -71,20 +75,6 @@ class MainActivity : AppCompatActivity(), OnNavigationListener {
 
     }
 
-
-    fun FragmentTransaction.tictactoeNav(
-        fragment: Fragment,
-        tag: String,
-        backStackTag: String?
-    ): FragmentTransaction {
-        backStackTag?.apply {
-            this@tictactoeNav.replace(R.id.fragmentContainer, fragment, tag)
-                .addToBackStack(this)
-        } ?: run {
-            this@tictactoeNav.replace(R.id.fragmentContainer, fragment, tag)
-        }
-        return this
-    }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
