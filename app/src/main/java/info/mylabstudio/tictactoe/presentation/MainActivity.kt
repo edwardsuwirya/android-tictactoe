@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import info.mylabstudio.tictactoe.R
 import info.mylabstudio.tictactoe.utils.PLAYER1_PARAM
 import info.mylabstudio.tictactoe.utils.PLAYER2_PARAM
@@ -51,28 +50,37 @@ class MainActivity : AppCompatActivity(), OnNavigationListener {
 //        }
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.apply {
-            when {
-                fragment is SplashFragment -> setCustomAnimations(
+            when (fragment) {
+                is SplashFragment -> setCustomAnimations(
                     R.anim.slide_in,
                     R.anim.slide_out
                 ).tictactoeNav(
                     fragment,
                     SPLASH_FRAGMENT_TAG,
                     null
-                ).commit()
-                fragment is BoardFragment -> tictactoeNav(
+                )
+                is BoardFragment -> tictactoeNav(
                     fragment,
                     BOARD_FRAGMENT_TAG,
                     REGISTRATION_FRAGMENT_TAG
-                ).commit()
-                fragment is RegistrationFragment -> tictactoeNav(
+                )
+                is RegistrationFragment -> tictactoeNav(
                     fragment,
                     REGISTRATION_FRAGMENT_TAG,
                     null
-                ).commit()
-            }
+                )
+                is TermConditionFragment -> tictactoeNav(
+                    fragment,
+                    TERMCONDITION_FRAGMENT_TAG,
+                    BOARD_FRAGMENT_TAG
+                )
+                else -> tictactoeNav(
+                    fragment,
+                    REGISTRATION_FRAGMENT_TAG,
+                    null
+                )
+            }.commit()
         }
-
     }
 
 
@@ -109,10 +117,20 @@ class MainActivity : AppCompatActivity(), OnNavigationListener {
         supportFragmentManager.popBackStack()
     }
 
+    override fun onRule() {
+        switchFragment(TermConditionFragment.newInstance())
+    }
+
+    override fun onHaveWinner() {
+        supportFragmentManager.beginTransaction()
+            .add(R.id.fragmentContainer, WinnerFragment.newInstance()).commit()
+    }
+
     companion object {
         const val BOARD_FRAGMENT_TAG = "BOARD_FRAGMENT"
         const val REGISTRATION_FRAGMENT_TAG = "REGISTRATION_FRAGMENT"
         const val SPLASH_FRAGMENT_TAG = "SPLASH_FRAGMENT"
+        const val TERMCONDITION_FRAGMENT_TAG = "TERMCONDISITON_FRAGMENT"
     }
 
 

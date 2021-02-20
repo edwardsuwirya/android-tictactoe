@@ -65,6 +65,9 @@ class BoardFragment(val onNavigationListener: OnNavigationListener) : Fragment()
         exit_button.setOnClickListener {
             onNavigationListener.onExit()
         }
+        rule_button.setOnClickListener {
+            onNavigationListener.onRule()
+        }
     }
 
     private fun showCurrentPlayerName(status: String) {
@@ -89,9 +92,12 @@ class BoardFragment(val onNavigationListener: OnNavigationListener) : Fragment()
         pos?.apply {
             currentBoard[pos[0]][pos[1]] = state
             val haveAWinner = winCalculation(pos[0], pos[1], state)
+
             if (!haveAWinner) {
                 switchPlayer()
                 showCurrentPlayerName("$PLAYER_TURN_TEXT")
+            } else {
+                onNavigationListener.onHaveWinner()
             }
         }
     }
