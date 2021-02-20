@@ -28,7 +28,7 @@ class SplashFragment(private val onNavigationListener: OnNavigationListener) : F
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         GlobalScope.launch {
-            delay(5000)
+            delay(2000)
             onNavigationListener.onSplash()
         }
     }
