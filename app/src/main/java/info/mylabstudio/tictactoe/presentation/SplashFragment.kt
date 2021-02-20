@@ -11,7 +11,8 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 
-class SplashFragment(private val onNavigationListener: OnNavigationListener) : Fragment() {
+class SplashFragment(private val onNavigationListener: OnNavigationListener) :
+    Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

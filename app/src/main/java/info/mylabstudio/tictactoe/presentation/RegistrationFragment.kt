@@ -40,5 +40,7 @@ class RegistrationFragment(private val onNavigationListener: OnNavigationListene
         @JvmStatic
         fun newInstance(onNavigationListener: OnNavigationListener) =
             RegistrationFragment(onNavigationListener)
+
+        const val TAG = "REGISTRATION_FRAGMENT"
     }
 }

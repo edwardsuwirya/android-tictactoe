@@ -117,5 +117,15 @@
                         android:textStyle="bold" />
             </TableRow>
         </TableLayout>
+
+        <Button
+                android:text="Exit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/exit_button"
+                android:background="@drawable/button_outline_bg"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
