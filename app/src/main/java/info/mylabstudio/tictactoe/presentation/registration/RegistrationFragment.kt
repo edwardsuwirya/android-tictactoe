@@ -1,12 +1,12 @@
-package info.mylabstudio.tictactoe.presentation
+package info.mylabstudio.tictactoe.presentation.registration
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import info.mylabstudio.tictactoe.R
+import info.mylabstudio.tictactoe.presentation.OnNavigationListener
 import kotlinx.android.synthetic.main.fragment_registration.*
 
 class RegistrationFragment(private val onNavigationListener: OnNavigationListener) : Fragment() {

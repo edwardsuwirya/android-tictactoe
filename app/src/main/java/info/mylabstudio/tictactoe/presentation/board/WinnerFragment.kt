@@ -1,18 +1,20 @@
-package info.mylabstudio.tictactoe.presentation
+package info.mylabstudio.tictactoe.presentation.board
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import info.mylabstudio.tictactoe.R
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.android.synthetic.main.fragment_winner.*
 
-
-class SplashFragment(private val onNavigationListener: OnNavigationListener) :
-    Fragment() {
+/**
+ * A simple [Fragment] subclass.
+ * Use the [WinnerFragment.newInstance] factory method to
+ * create an instance of this fragment.
+ */
+class WinnerFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,20 +25,17 @@ class SplashFragment(private val onNavigationListener: OnNavigationListener) :
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_splash, container, false)
+        return inflater.inflate(R.layout.fragment_winner, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        GlobalScope.launch {
-            delay(2000)
-            onNavigationListener.onSplash()
-        }
+            Glide.with(requireContext())
+                .load(R.drawable.winner)
+                .into(imageView3);
     }
 
     companion object {
         @JvmStatic
-        fun newInstance(onNavigationListener: OnNavigationListener) =
-            SplashFragment(onNavigationListener)
+        fun newInstance() = WinnerFragment()
     }
 }

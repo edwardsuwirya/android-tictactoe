@@ -5,6 +5,11 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import info.mylabstudio.tictactoe.R
+import info.mylabstudio.tictactoe.presentation.board.BoardFragment
+import info.mylabstudio.tictactoe.presentation.board.WinnerFragment
+import info.mylabstudio.tictactoe.presentation.registration.RegistrationFragment
+import info.mylabstudio.tictactoe.presentation.registration.TermConditionFragment
+import info.mylabstudio.tictactoe.presentation.splash.SplashFragment
 import info.mylabstudio.tictactoe.utils.PLAYER1_PARAM
 import info.mylabstudio.tictactoe.utils.PLAYER2_PARAM
 import info.mylabstudio.tictactoe.utils.tictactoeNav

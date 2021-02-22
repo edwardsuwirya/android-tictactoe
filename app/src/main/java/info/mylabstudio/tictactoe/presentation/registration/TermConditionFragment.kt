@@ -1,4 +1,4 @@
-package info.mylabstudio.tictactoe.presentation
+package info.mylabstudio.tictactoe.presentation.registration
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
