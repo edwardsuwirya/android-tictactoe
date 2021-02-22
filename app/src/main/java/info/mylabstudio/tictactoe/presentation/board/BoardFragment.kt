@@ -6,11 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.navigation.findNavController
 import info.mylabstudio.tictactoe.R
-import info.mylabstudio.tictactoe.presentation.OnNavigationListener
 import info.mylabstudio.tictactoe.utils.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_board.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,13 +24,9 @@ import kotlinx.android.synthetic.main.fragment_board.*
  * Use the [BoardFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class BoardFragment(val onNavigationListener: OnNavigationListener) : Fragment() {
+class BoardFragment() : Fragment() {
     // TODO: Rename and change types of parameters
-
     var activePlayer = ""
-//    var player1 = ""
-//    var player2 = ""
-
     var currentBoard = board
 
     private var player1: String? = null
@@ -63,10 +62,10 @@ class BoardFragment(val onNavigationListener: OnNavigationListener) : Fragment()
         button9.setOnClickListener { boardClick(it) }
 
         exit_button.setOnClickListener {
-            onNavigationListener.onExit()
+            view.findNavController().popBackStack()
         }
         rule_button.setOnClickListener {
-            onNavigationListener.onRule()
+            view.findNavController().navigate(R.id.action_boardFragment_to_termConditionFragment)
         }
     }
 
@@ -97,7 +96,14 @@ class BoardFragment(val onNavigationListener: OnNavigationListener) : Fragment()
                 switchPlayer()
                 showCurrentPlayerName("$PLAYER_TURN_TEXT")
             } else {
-                onNavigationListener.onHaveWinner()
+//                requireView().findNavController()
+//                    .navigate(R.id.action_boardFragment_to_winnerFragment)
+                parentFragmentManager.beginTransaction()
+                    .add(R.id.board_layout, WinnerFragment.newInstance()).commit()
+                GlobalScope.launch {
+                    delay(2000)
+                    requireView().findNavController().popBackStack()
+                }
             }
         }
     }
@@ -145,29 +151,6 @@ class BoardFragment(val onNavigationListener: OnNavigationListener) : Fragment()
 
     private fun showWinner() {
         showCurrentPlayerName("$WINNER_TEXT")
-        clearBoard()
-    }
-
-    private fun clearBoard() {
-        currentBoard = board
-        button1.setText("")
-        button1.setBackgroundResource(R.color.white)
-        button2.setText("")
-        button2.setBackgroundResource(R.color.white)
-        button3.setText("")
-        button3.setBackgroundResource(R.color.white)
-        button4.setText("")
-        button4.setBackgroundResource(R.color.white)
-        button5.setText("")
-        button5.setBackgroundResource(R.color.white)
-        button6.setText("")
-        button6.setBackgroundResource(R.color.white)
-        button7.setText("")
-        button7.setBackgroundResource(R.color.white)
-        button8.setText("")
-        button8.setBackgroundResource(R.color.white)
-        button9.setText("")
-        button9.setBackgroundResource(R.color.white)
     }
 
 
@@ -182,17 +165,12 @@ class BoardFragment(val onNavigationListener: OnNavigationListener) : Fragment()
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(
-            player1: String,
-            player2: String,
-            navigationListener: OnNavigationListener
-        ) =
-            BoardFragment(navigationListener).apply {
-                arguments = Bundle().apply {
-                    putString(PLAYER1_PARAM, player1)
-                    putString(PLAYER2_PARAM, player2)
-                }
+        fun newInstance() = BoardFragment().apply {
+            arguments = Bundle().apply {
+                putString(PLAYER1_PARAM, player1)
+                putString(PLAYER2_PARAM, player2)
             }
+        }
 
     }
 

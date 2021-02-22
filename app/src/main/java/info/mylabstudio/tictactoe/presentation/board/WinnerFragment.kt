@@ -5,9 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
 import info.mylabstudio.tictactoe.R
 import kotlinx.android.synthetic.main.fragment_winner.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 /**
  * A simple [Fragment] subclass.
@@ -15,7 +20,6 @@ import kotlinx.android.synthetic.main.fragment_winner.*
  * create an instance of this fragment.
  */
 class WinnerFragment : Fragment() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -29,9 +33,9 @@ class WinnerFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-            Glide.with(requireContext())
-                .load(R.drawable.winner)
-                .into(imageView3);
+        Glide.with(requireContext())
+            .load(R.drawable.winner)
+            .into(imageView3)
     }
 
     companion object {

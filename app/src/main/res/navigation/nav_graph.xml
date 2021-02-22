@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/nav_graph"
+        app:startDestination="@id/splashFragment">
+
+    <fragment
+            android:id="@+id/splashFragment"
+            android:name="info.mylabstudio.tictactoe.presentation.splash.SplashFragment"
+            android:label="fragment_splash"
+            tools:layout="@layout/fragment_splash">
+        <action
+                android:id="@+id/action_splashFragment_to_registrationFragment"
+                app:destination="@id/registrationFragment"
+                app:popUpTo="@id/nav_graph"
+                app:popUpToInclusive="true"
+                app:enterAnim="@anim/slide_in"
+                app:exitAnim="@anim/slide_out" />
+    </fragment>
+    <fragment
+            android:id="@+id/registrationFragment"
+            android:name="info.mylabstudio.tictactoe.presentation.registration.RegistrationFragment"
+            android:label="fragment_registration"
+            tools:layout="@layout/fragment_registration">
+        <action
+                android:id="@+id/action_registrationFragment_to_boardFragment"
+                app:destination="@id/boardFragment"
+                app:popEnterAnim="@anim/slide_in"
+                app:popExitAnim="@anim/slide_out" />
+    </fragment>
+    <fragment
+            android:id="@+id/boardFragment"
+            android:name="info.mylabstudio.tictactoe.presentation.board.BoardFragment"
+            android:label="fragment_board"
+            tools:layout="@layout/fragment_board">
+        <action
+                android:id="@+id/action_boardFragment_to_termConditionFragment"
+                app:destination="@id/termConditionFragment" />
+        <argument
+                android:name="player1"
+                app:argType="string" />
+        <argument
+                android:name="player2"
+                app:argType="string" />
+    </fragment>
+    <fragment
+            android:id="@+id/termConditionFragment"
+            android:name="info.mylabstudio.tictactoe.presentation.registration.TermConditionFragment"
+            android:label="TermConditionFragment"
+            tools:layout="@layout/fragment_term_condition" />
+</navigation>
